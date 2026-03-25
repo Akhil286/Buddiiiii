@@ -420,7 +420,7 @@
             const birthYear = 2006; const bMonth = 3    ; const bDay = 10; const bHour = 0; const bMin = 0;  
             let ampm = bHour >= 12 ? 'PM' : 'AM'; let displayHour = bHour % 12; displayHour = displayHour ? displayHour : 12; 
             let displayMin = bMin < 10 ? '0' + bMin : bMin;
-            document.getElementById('displayTime').innerText = '3:30';
+            document.getElementById('displayTime').innerText = '1:10 PM';
             const exactBirthDateObject = new Date(birthYear, bMonth, bDay, bHour, bMin, 0);
             let clickCount = 0; let clickTimer;
             function easterEggClick() {
