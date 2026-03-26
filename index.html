@@ -500,8 +500,8 @@
                     confetti({ particleCount: 20, spread: 40, origin: { x: clientX/window.innerWidth, y: clientY/window.innerHeight }});
                     b.remove();
                     
-                    if(popped === 10) showPopup("10 balloons popped! You're really bored waiting, aren't you? 😂");
-                    if(popped === 25) showPopup("25 balloons! Okay, you are officially the balloon popping champion. 🏆");
+                    if(popped === 5) showPopup("5 balloons popped! You're really bored waiting, aren't you? 😂");
+                    if(popped === 10) showPopup("10 balloons! Okay, you are officially the balloon popping champion. 🏆");
                 };
                 b.addEventListener('mousedown', popBalloon); b.addEventListener('touchstart', popBalloon, {passive: false});
                 setTimeout(() => b.remove(), 10000); 
