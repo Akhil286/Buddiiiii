@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -373,6 +373,7 @@
                 } else {
                     isCorrect = userAnswer === currentHintData.secretAnswer.toLowerCase().trim();
                 }
+                
                 if(isCorrect) {
                     triggerHaptic([50, 50, 100]);
                     input.style.borderColor = "var(--accent)";
@@ -380,9 +381,18 @@
                     result.style.color = "var(--accent)";
                     result.innerHTML = "Correct! Unlocking memory... 💖"; 
                     confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }});
+                    
                     const hintBox = document.getElementById(currentHintData.id);
-                    hintBox.innerHTML = `<div style="color: var(--accent); font-weight: 800; font-size: 1.2rem; margin-bottom: 5px;">Unlocked!</div><span style="font-size:0.85rem; color: #333; font-weight: 600;">${currentHintData.revealText}</span>`;
+                    const unlockedHTML = `<div style="color: var(--accent); font-weight: 800; font-size: 1.2rem; margin-bottom: 5px;">Unlocked!</div><span style="font-size:0.9rem; color: #333; font-weight: 700;">${currentHintData.revealText}</span>`;
+                    
+                    hintBox.innerHTML = unlockedHTML;
                     hintBox.style.background = "white";
+
+                    // Save to localStorage
+                    let savedHints = JSON.parse(localStorage.getItem('mokshhhHints')) || {};
+                    savedHints[currentHintData.id] = currentHintData.revealText;
+                    localStorage.setItem('mokshhhHints', JSON.stringify(savedHints));
+
                     setTimeout(() => { closePasswordPopup(); }, 1500);
                 } else {
                     triggerHaptic([40, 20, 40]);
@@ -396,18 +406,19 @@
                     }, 1500);
                 }
             }
+            
             function triggerHaptic(pattern) { if ('vibrate' in navigator) navigator.vibrate(pattern); }
             const mainCard = document.querySelector('.main-card');
             if (window.innerWidth > 768) {
-        window.addEventListener('deviceorientation', (e) => {
-            if (!e.beta || !e.gamma) return;
-            let tiltX = Math.max(-8, Math.min(8, e.beta - 40));
-            let tiltY = Math.max(-8, Math.min(8, e.gamma));
-            let baseScale = document.body.classList.contains('birthday-mode') ? 1.01 : 1;
-            mainCard.style.transform =
-            `perspective(1000px) scale(${baseScale}) rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
-        });
-    }
+                window.addEventListener('deviceorientation', (e) => {
+                    if (!e.beta || !e.gamma) return;
+                    let tiltX = Math.max(-8, Math.min(8, e.beta - 40));
+                    let tiltY = Math.max(-8, Math.min(8, e.gamma));
+                    let baseScale = document.body.classList.contains('birthday-mode') ? 1.01 : 1;
+                    mainCard.style.transform =
+                    `perspective(1000px) scale(${baseScale}) rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
+                });
+            }
             function spawnSparkle(x, y) {
                 const sparkle = document.createElement('div'); sparkle.className = 'magic-sparkle';
                 sparkle.style.left = (x - 5) + 'px'; sparkle.style.top = (y - 5) + 'px';
@@ -536,7 +547,6 @@
                 closeMedia();
             });
 
-
             const audio = document.getElementById('bdayAudio');
             function fadeInAudio() {
                 audio.volume = 0; 
@@ -588,6 +598,29 @@
             }
 
             document.getElementById('musicBtn').onclick = () => { if (audio.paused) { audio.volume = 1; audio.play(); document.querySelector('#musicBtn i').classList.replace('fa-music', 'fa-pause'); } else { audio.pause(); document.querySelector('#musicBtn i').classList.replace('fa-pause', 'fa-music'); } };
+
+            // --- Load hints from local storage on load ---
+            function initHints() {
+                const now = new Date();
+                let target = new Date(now.getFullYear(), bMonth, bDay, bHour, bMin);
+                
+                // Clear memory if it's more than 24 hours past the birthday
+                if (target < now && (now - target) > 86400000) {
+                    localStorage.removeItem('mokshhhHints');
+                    return; 
+                }
+                
+                let savedHints = JSON.parse(localStorage.getItem('mokshhhHints')) || {};
+                for (let id in savedHints) {
+                    const hintBox = document.getElementById(id);
+                    if (hintBox) {
+                        hintBox.innerHTML = `<div style="color: var(--accent); font-weight: 800; font-size: 1.2rem; margin-bottom: 5px;">Unlocked!</div><span style="font-size:0.9rem; color: #333; font-weight: 700;">${savedHints[id]}</span>`;
+                        hintBox.style.background = "white";
+                    }
+                }
+            }
+
+            initHints();
 
             setInterval(update, 1000); update();
         </script>
