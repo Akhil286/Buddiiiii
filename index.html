@@ -1,628 +1,653 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Mokshhh">
+    
+    <meta property="og:title" content="A Special Surprise for Mokshhh... ✨">
+    <meta property="og:description" content="Counting down to the most special day of the year!">
+    <meta property="og:image" content="l.jpeg">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+    
+    <title>Mokshhh's Birthday ✨</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --accent: #ff2a85; --accent-light: #ff75b3; --primary: #8a2be2; --primary-dark: #5e10a3; --bg-before: #faf5f8; --bg-after: #0a0508; }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg-before); min-height: 100dvh; display: block; transition: background 1.5s ease; overflow-x: hidden; margin: 0; -webkit-tap-highlight-color: transparent; overscroll-behavior-y: none; }
+        .page-wrapper { min-height: 100dvh; display: flex; align-items: center; justify-content: center; padding: max(20px, env(safe-area-inset-top)) max(15px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(15px, env(safe-area-inset-left)); }
         
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="apple-mobile-web-app-title" content="Mokshhh">
+        .mesh { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 15% 25%, rgba(255, 42, 133, 0.08) 0%, transparent 40%), radial-gradient(circle at 85% 75%, rgba(138, 43, 226, 0.08) 0%, transparent 40%), radial-gradient(circle at 50% 50%, rgba(255, 117, 179, 0.05) 0%, transparent 60%); animation: meshBreath 10s ease-in-out infinite alternate; }
+        @keyframes meshBreath { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
+
+        .main-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 30px 60px rgba(0,0,0,0.06), 0 0 40px rgba(255, 42, 133, 0.1); max-width: 912px; width: 100%; padding: 45px 30px; text-align: center; position: relative; z-index: 10; margin: auto; }
+        .before-content { display: block; position: relative; z-index: 2; } .birthday-content { display: none; position: relative; z-index: 2; }
         
-        <meta property="og:title" content="A Special Surprise for Mokshhh... ✨">
-        <meta property="og:description" content="Counting down to the most special day of the year!">
-        <meta property="og:image" content="l.jpeg">
-        <meta property="og:type" content="website">
+        body.birthday-mode { background: var(--bg-after); }
+        body.birthday-mode .main-card { background: rgba(15, 10, 18, 0.85); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 0 60px rgba(255, 42, 133, 0.25); color: white; }
+        body.birthday-mode .before-content { display: none; }
+        body.birthday-mode .birthday-content { display: block; animation: fadeIn 1.2s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+        .profile-wrapper { width: 190px; height: 190px; margin: 0 auto 25px; position: relative; }
+        .profile-wrapper::before { content: ''; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: linear-gradient(45deg, var(--accent), var(--primary)); border-radius: 50%; z-index: -1; filter: blur(20px); opacity: 0.4; animation: pulse-aura 3s infinite alternate; }
+        @keyframes pulse-aura { 0% { opacity: 0.3; transform: scale(0.95); } 100% { opacity: 0.6; transform: scale(1.05); } }
+        .profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 6px solid white; box-shadow: 0 15px 35px rgba(0,0,0,0.15); transition: 0.3s; }
+        .profile-wrapper:active .profile-img { transform: scale(0.95); }
+
+        .details-box { background: rgba(255, 255, 255, 0.8); border-radius: 20px; padding: 12px 25px; display: inline-flex; gap: 20px; margin-bottom: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.04); font-weight: 700; color: var(--primary-dark); font-size: 1.05rem; flex-wrap: wrap; justify-content: center; }
+        .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 25px; }
+        .time-box { background: linear-gradient(180deg, #ffffff 0%, #fdfdfd 100%); padding: 15px 5px; border-radius: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.02); }
+        .unit-val { font-size: 2.2rem; font-weight: 800; display: block; color: var(--accent); line-height: 1; }
+        .unit-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: #a0a0a0; margin-top: 5px; display: block; font-weight: 600;}
+
+        /* Voice Note Teaser */
+        .voice-note { background: linear-gradient(135deg, var(--accent), var(--primary)); border-radius: 50px; padding: 12px 25px; color: white; display: inline-flex; align-items: center; gap: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 10px 25px rgba(255, 42, 133, 0.3); margin: 5px auto 25px; transition: 0.2s; position: relative; z-index: 10; }
+        .voice-note:active { transform: scale(0.95); }
+        .voice-play-btn { background: white; color: var(--accent); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .wave-anim { display: flex; gap: 3px; height: 15px; align-items: center; }
+        .wave-bar { width: 3px; background: rgba(255,255,255,0.5); border-radius: 3px; transition: height 0.1s; height: 4px; }
+        .playing .wave-bar { animation: wave 1s infinite alternate ease-in-out; background: white; }
+        .playing .wave-bar:nth-child(1) { animation-delay: 0.1s; } .playing .wave-bar:nth-child(2) { animation-delay: 0.3s; } .playing .wave-bar:nth-child(3) { animation-delay: 0.2s; } .playing .wave-bar:nth-child(4) { animation-delay: 0.4s; }
+        @keyframes wave { 0% { height: 4px; } 100% { height: 15px; } }
+
+        /* Life Stats */
+        .glass-panel { background: rgba(255, 255, 255, 0.7); color: #444; padding: 25px 20px; border-radius: 25px; margin: 15px auto 30px; max-width: 500px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.03); border: 1px solid rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        .life-stats-title { font-family: 'Playfair Display', serif; color: var(--primary); font-weight: 600; font-size: 1.4rem; font-style: italic; margin-bottom: 15px; border-bottom: 1px solid rgba(138, 43, 226, 0.15); padding-bottom: 10px; }
+        .stat-line { margin: 15px 0; font-size: 1rem; font-weight: 500; }
+        .stat-highlight { color: var(--accent); font-weight: 800; font-size: 1.3rem; letter-spacing: 1px; display: block; margin-top: 5px; }
+        .stat-footer { margin-top: 20px; font-family: 'Dancing Script', cursive; font-size: 1.6rem; color: var(--accent); animation: pulse-soft 2s infinite; }
+
+        /* Patience Tester */
+        .secret-hold-container { margin-top: 20px; position: relative; text-align: center; z-index: 10; }
+        .hold-btn { background: linear-gradient(135deg, var(--accent), var(--primary)); color: white; border: none; padding: 15px 30px; font-size: 1.05rem; border-radius: 50px; font-weight: 600; box-shadow: 0 10px 25px rgba(255, 42, 133, 0.35); -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; touch-action: manipulation; }
+        .hold-btn:active { transform: scale(0.96); }
+        .hold-progress-bar { width: 220px; height: 8px; background: rgba(0,0,0,0.08); border-radius: 10px; margin: 15px auto 0; overflow: hidden; opacity: 0; transition: opacity 0.3s; }
+        #holdProgress { width: 0%; height: 100%; background: var(--accent); transition: width 0.1s linear; }
+        .hold-message { margin-top: 12px; font-size: 0.95rem; font-weight: 600; color: var(--primary-dark); min-height: 24px; }
+
+        /* Hints */
+        .hints-container { display: flex; gap: 12px; justify-content: center; margin-top: 25px; flex-wrap: wrap; position: relative; z-index: 10; }
+        .hint-box { background: rgba(255,255,255,0.85); padding: 15px; border-radius: 20px; flex: 1; min-width: 100px; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.03); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.04); }
+        .hint-box:active { transform: scale(0.95); }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } }
+
+        /* Swipeable Gallery - FIXED FOR VIDEOS */
+        .gallery-wrapper { margin-top: 20px; position: relative; z-index: 10; }
+        .gallery-wrapper::after { content: ''; position: absolute; top: 0; right: 0; height: 100%; width: 30px; background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.8)); pointer-events: none; border-radius: 0 20px 20px 0; }
+        .gallery { display: flex; gap: 15px; overflow-x: auto; padding: 15px 5px 25px 5px; scroll-snap-type: x mandatory; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+        .gallery::-webkit-scrollbar { display: none; }
+        .gallery img, .gallery video { width: 130px; height: 130px; border-radius: 20px; object-fit: cover; scroll-snap-align: center; flex-shrink: 0; border: 4px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer; }
+        .gallery img:active, .gallery video:active { transform: scale(0.95); }
         
-        <title>Mokshhh's Birthday ✨</title>
-        
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
-        
-        <style>
-            :root { --accent: #ff2a85; --accent-light: #ff75b3; --primary: #8a2be2; --primary-dark: #5e10a3; --bg-before: #faf5f8; --bg-after: #0a0508; }
-            body { font-family: 'Outfit', sans-serif; background: var(--bg-before); min-height: 100dvh; display: block; transition: background 1.5s ease; overflow-x: hidden; margin: 0; -webkit-tap-highlight-color: transparent; overscroll-behavior-y: none; }
-            .page-wrapper { min-height: 100dvh; display: flex; align-items: center; justify-content: center; padding: max(20px, env(safe-area-inset-top)) max(15px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(15px, env(safe-area-inset-left)); }
-            
-            .mesh { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 15% 25%, rgba(255, 42, 133, 0.08) 0%, transparent 40%), radial-gradient(circle at 85% 75%, rgba(138, 43, 226, 0.08) 0%, transparent 40%), radial-gradient(circle at 50% 50%, rgba(255, 117, 179, 0.05) 0%, transparent 60%); animation: meshBreath 10s ease-in-out infinite alternate; }
-            @keyframes meshBreath { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
+        /* Balloon Pop Hint */
+        .pop-hint { font-size: 0.85rem; color: var(--accent); font-weight: 700; margin-top: 30px; letter-spacing: 1px; animation: pulse-soft 2s infinite; transition: opacity 0.5s ease; }
+        .bottom-message { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.05); font-size: 0.95rem; color: #666; font-weight: 500; padding-bottom: 10px; }
+        .bottom-message span { display: block; margin-top: 5px; font-size: 0.75rem; color: #aaa; letter-spacing: 0.5px; }
 
-            .main-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 30px 60px rgba(0,0,0,0.06), 0 0 40px rgba(255, 42, 133, 0.1); max-width: 912px; width: 100%; padding: 45px 30px; text-align: center; position: relative; z-index: 10; margin: auto; }
-            .before-content { display: block; position: relative; z-index: 2; } .birthday-content { display: none; position: relative; z-index: 2; }
-            
-            body.birthday-mode { background: var(--bg-after); }
-            body.birthday-mode .main-card { background: rgba(15, 10, 18, 0.85); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 0 60px rgba(255, 42, 133, 0.25); color: white; }
-            body.birthday-mode .before-content { display: none; }
-            body.birthday-mode .birthday-content { display: block; animation: fadeIn 1.2s ease; }
-            @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* Birthday Mode Envelope & Letter */
+        .envelope-container { padding: 30px 10px; cursor: pointer; transition: 0.3s; position: relative; z-index: 10; }
+        .envelope-container:active { transform: scale(0.95); }
+        .envelope-icon { font-size: 8rem; background: linear-gradient(135deg, var(--accent), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: -15px; filter: drop-shadow(0 15px 20px rgba(0,0,0,0.4)); }
+        .wax-seal { width: 70px; height: 70px; background: linear-gradient(135deg, #d81b60, #880e4f); border-radius: 50%; margin: 0 auto 15px; position: relative; box-shadow: inset 0 0 15px rgba(0,0,0,0.6), 0 15px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #ffd700; border: 2px solid #ad1457; z-index: 5; }
+        .seal-text { color: var(--accent); letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; margin-top: 20px; font-weight: 800; animation: pulse-text 2s infinite; }
+        .letter-view { display: none; background: #fff; color: #333; padding: 40px 25px; border-radius: 25px; box-shadow: inset 0 0 30px rgba(0,0,0,0.03), 0 20px 50px rgba(0,0,0,0.5); text-align: left; position: relative; z-index: 10; }
+        .letter-view::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://www.transparenttextures.com/patterns/cream-paper.png'); opacity: 0.6; border-radius: 25px; pointer-events: none; }
+        .letter-title { font-family: 'Dancing Script', cursive; font-size: 3.2rem; color: var(--accent); text-align: center; margin-bottom: 20px; }
+        .letter-body { font-family: 'Playfair Display', serif; font-size: 1.1rem; line-height: 1.7; position: relative; z-index: 1; color: #222;}
+        .gift-btn { background: linear-gradient(45deg, var(--accent), var(--primary)); color: white !important; padding: 15px 25px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 10px 25px rgba(255, 42, 133, 0.4); border: none; width: 100%; text-align: center; margin-top: 30px; font-size: 1.1rem; cursor: pointer; }
 
-            .profile-wrapper { width: 190px; height: 190px; margin: 0 auto 25px; position: relative; }
-            .profile-wrapper::before { content: ''; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: linear-gradient(45deg, var(--accent), var(--primary)); border-radius: 50%; z-index: -1; filter: blur(20px); opacity: 0.4; animation: pulse-aura 3s infinite alternate; }
-            @keyframes pulse-aura { 0% { opacity: 0.3; transform: scale(0.95); } 100% { opacity: 0.6; transform: scale(1.05); } }
-            .profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 6px solid white; box-shadow: 0 15px 35px rgba(0,0,0,0.15); transition: 0.3s; }
-            .profile-wrapper:active .profile-img { transform: scale(0.95); }
+        .magic-sparkle { position: absolute; pointer-events: none; z-index: 9999; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); animation: sparkleFade 0.8s forwards linear; }
+        @keyframes sparkleFade { 0% { transform: scale(1) translateY(0) rotate(0deg); opacity: 1; } 100% { transform: scale(0) translateY(40px) rotate(180deg); opacity: 0; } }
 
-            .details-box { background: rgba(255, 255, 255, 0.8); border-radius: 20px; padding: 12px 25px; display: inline-flex; gap: 20px; margin-bottom: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.04); font-weight: 700; color: var(--primary-dark); font-size: 1.05rem; flex-wrap: wrap; justify-content: center; }
-            .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 25px; }
-            .time-box { background: linear-gradient(180deg, #ffffff 0%, #fdfdfd 100%); padding: 15px 5px; border-radius: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.02); }
-            .unit-val { font-size: 2.2rem; font-weight: 800; display: block; color: var(--accent); line-height: 1; }
-            .unit-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: #a0a0a0; margin-top: 5px; display: block; font-weight: 600;}
+        .balloon-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: inherit; overflow: hidden; pointer-events: none; z-index: 5; }
+        .float-balloon { position: absolute; bottom: -80px; font-size: 2.8rem; cursor: pointer; user-select: none; pointer-events: auto; animation: floatUpCard 10s linear forwards; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2)); }
+        @keyframes floatUpCard { to { bottom: 110%; transform: rotate(20deg); } }
 
-            /* Voice Note Teaser */
-            .voice-note { background: linear-gradient(135deg, var(--accent), var(--primary)); border-radius: 50px; padding: 12px 25px; color: white; display: inline-flex; align-items: center; gap: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 10px 25px rgba(255, 42, 133, 0.3); margin: 5px auto 25px; transition: 0.2s; position: relative; z-index: 10; }
-            .voice-note:active { transform: scale(0.95); }
-            .voice-play-btn { background: white; color: var(--accent); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-            .wave-anim { display: flex; gap: 3px; height: 15px; align-items: center; }
-            .wave-bar { width: 3px; background: rgba(255,255,255,0.5); border-radius: 3px; transition: height 0.1s; height: 4px; }
-            .playing .wave-bar { animation: wave 1s infinite alternate ease-in-out; background: white; }
-            .playing .wave-bar:nth-child(1) { animation-delay: 0.1s; } .playing .wave-bar:nth-child(2) { animation-delay: 0.3s; } .playing .wave-bar:nth-child(3) { animation-delay: 0.2s; } .playing .wave-bar:nth-child(4) { animation-delay: 0.4s; }
-            @keyframes wave { 0% { height: 4px; } 100% { height: 15px; } }
+        .golden-minute { background: linear-gradient(45deg, #ffd700, #ffaa00); color: #422000; padding: 15px; border-radius: 15px; font-weight: 800; font-size: 1.1rem; animation: pulse-gold 1s infinite; margin-bottom: 30px; display: none; box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3); position: relative; z-index: 10;}
+        .btn-music { position: fixed; bottom: max(25px, env(safe-area-inset-bottom)); right: 25px; width: 55px; height: 55px; border-radius: 50%; background: white; display: none; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 100; color: var(--accent); font-size: 1.3rem; transition: 0.3s; }
+        body.birthday-mode .btn-music { display: flex; animation: popIn 0.5s ease forwards; }
+        @keyframes popIn { 0% { transform: scale(0); } 80% { transform: scale(1.2); } 100% { transform: scale(1); } }
 
-            /* Life Stats */
-            .glass-panel { background: rgba(255, 255, 255, 0.7); color: #444; padding: 25px 20px; border-radius: 25px; margin: 15px auto 30px; max-width: 500px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.03); border: 1px solid rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-            .life-stats-title { font-family: 'Playfair Display', serif; color: var(--primary); font-weight: 600; font-size: 1.4rem; font-style: italic; margin-bottom: 15px; border-bottom: 1px solid rgba(138, 43, 226, 0.15); padding-bottom: 10px; }
-            .stat-line { margin: 15px 0; font-size: 1rem; font-weight: 500; }
-            .stat-highlight { color: var(--accent); font-weight: 800; font-size: 1.3rem; letter-spacing: 1px; display: block; margin-top: 5px; }
-            .stat-footer { margin-top: 20px; font-family: 'Dancing Script', cursive; font-size: 1.6rem; color: var(--accent); animation: pulse-soft 2s infinite; }
+        /* CUSTOM POPUPS */
+        .custom-popup-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); opacity: 0; transition: opacity 0.3s ease; }
+        .custom-popup-box { background: rgba(255, 255, 255, 0.95); padding: 30px 25px; border-radius: 25px; text-align: center; max-width: 85%; width: 340px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); transform: scale(0.8); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .custom-popup-text { font-size: 1.1rem; color: #333; font-weight: 600; margin-bottom: 25px; line-height: 1.5; }
+        .custom-popup-btn { background: linear-gradient(135deg, var(--accent), var(--primary)); color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: 700; width: 100%; box-shadow: 0 5px 15px rgba(255, 42, 133, 0.3); }
+        .vault-input { width: 100%; box-sizing: border-box; padding: 12px; border-radius: 15px; border: 2px solid rgba(138, 43, 226, 0.3); background: rgba(255,255,255,0.6); text-align: center; font-family: 'Outfit', sans-serif; font-weight: 600; outline: none; transition: 0.3s; margin-bottom: 15px; color: #333; font-size: 1rem; }
+        .vault-input:focus { border-color: var(--primary); background: white; }
+        .error-shake { animation: shake 0.4s; border-color: red !important; }
 
-            /* Patience Tester */
-            .secret-hold-container { margin-top: 20px; position: relative; text-align: center; z-index: 10; }
-            .hold-btn { background: linear-gradient(135deg, var(--accent), var(--primary)); color: white; border: none; padding: 15px 30px; font-size: 1.05rem; border-radius: 50px; font-weight: 600; box-shadow: 0 10px 25px rgba(255, 42, 133, 0.35); -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; touch-action: manipulation; }
-            .hold-btn:active { transform: scale(0.96); }
-            .hold-progress-bar { width: 220px; height: 8px; background: rgba(0,0,0,0.08); border-radius: 10px; margin: 15px auto 0; overflow: hidden; opacity: 0; transition: opacity 0.3s; }
-            #holdProgress { width: 0%; height: 100%; background: var(--accent); transition: width 0.1s linear; }
-            .hold-message { margin-top: 12px; font-size: 0.95rem; font-weight: 600; color: var(--primary-dark); min-height: 24px; }
+        @media (max-width: 576px) {
+            .main-card { padding: 35px 20px; border-radius: 30px; } .main-title { font-size: 2.2rem; } .profile-wrapper { width: 170px; height: 170px; } .countdown-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } .unit-val { font-size: 2.1rem; } .details-box { gap: 10px; padding: 12px 20px; font-size: 0.95rem; flex-direction: column; text-align: center; width: 100%;} .gallery img, .gallery video { width: 110px; height: 110px; } .hints-container { flex-direction: column; gap: 12px; } .hint-box { width: 100%; padding: 15px; } .letter-view { padding: 30px 20px; } .letter-title { font-size: 2.8rem; } .envelope-icon { font-size: 6.5rem; } .wax-seal { width: 55px; height: 55px; font-size: 1.8rem; } .glass-panel { font-size: 0.95rem; padding: 25px 15px; } .stat-highlight { font-size: 1.2rem; } .hold-btn { padding: 12px 20px; width: 100%; } .float-balloon { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
 
-            /* Hints */
-            .hints-container { display: flex; gap: 12px; justify-content: center; margin-top: 25px; flex-wrap: wrap; position: relative; z-index: 10; }
-            .hint-box { background: rgba(255,255,255,0.85); padding: 15px; border-radius: 20px; flex: 1; min-width: 100px; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.03); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.04); }
-            .hint-box:active { transform: scale(0.95); }
-            @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } }
+    <div class="mesh"></div>
+    <canvas id="confetti-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:100;"></canvas>
 
-            /* Swipeable Gallery - FIXED FOR VIDEOS */
-            .gallery-wrapper { margin-top: 20px; position: relative; z-index: 10; }
-            .gallery-wrapper::after { content: ''; position: absolute; top: 0; right: 0; height: 100%; width: 30px; background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.8)); pointer-events: none; border-radius: 0 20px 20px 0; }
-            .gallery { display: flex; gap: 15px; overflow-x: auto; padding: 15px 5px 25px 5px; scroll-snap-type: x mandatory; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-            .gallery::-webkit-scrollbar { display: none; }
-            .gallery img, .gallery video { width: 130px; height: 130px; border-radius: 20px; object-fit: cover; scroll-snap-align: center; flex-shrink: 0; border: 4px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer; }
-            .gallery img:active, .gallery video:active { transform: scale(0.95); }
-            
-            /* Balloon Pop Hint */
-            .pop-hint { font-size: 0.85rem; color: var(--accent); font-weight: 700; margin-top: 30px; letter-spacing: 1px; animation: pulse-soft 2s infinite; transition: opacity 0.5s ease; }
-            .bottom-message { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.05); font-size: 0.95rem; color: #666; font-weight: 500; padding-bottom: 10px; }
-            .bottom-message span { display: block; margin-top: 5px; font-size: 0.75rem; color: #aaa; letter-spacing: 0.5px; }
-
-            /* Birthday Mode Envelope & Letter */
-            .envelope-container { padding: 30px 10px; cursor: pointer; transition: 0.3s; position: relative; z-index: 10; }
-            .envelope-container:active { transform: scale(0.95); }
-            .envelope-icon { font-size: 8rem; background: linear-gradient(135deg, var(--accent), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: -15px; filter: drop-shadow(0 15px 20px rgba(0,0,0,0.4)); }
-            .wax-seal { width: 70px; height: 70px; background: linear-gradient(135deg, #d81b60, #880e4f); border-radius: 50%; margin: 0 auto 15px; position: relative; box-shadow: inset 0 0 15px rgba(0,0,0,0.6), 0 15px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #ffd700; border: 2px solid #ad1457; z-index: 5; }
-            .seal-text { color: var(--accent); letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; margin-top: 20px; font-weight: 800; animation: pulse-text 2s infinite; }
-            .letter-view { display: none; background: #fff; color: #333; padding: 40px 25px; border-radius: 25px; box-shadow: inset 0 0 30px rgba(0,0,0,0.03), 0 20px 50px rgba(0,0,0,0.5); text-align: left; position: relative; z-index: 10; }
-            .letter-view::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://www.transparenttextures.com/patterns/cream-paper.png'); opacity: 0.6; border-radius: 25px; pointer-events: none; }
-            .letter-title { font-family: 'Dancing Script', cursive; font-size: 3.2rem; color: var(--accent); text-align: center; margin-bottom: 20px; }
-            .letter-body { font-family: 'Playfair Display', serif; font-size: 1.1rem; line-height: 1.7; position: relative; z-index: 1; color: #222;}
-            .gift-btn { background: linear-gradient(45deg, var(--accent), var(--primary)); color: white !important; padding: 15px 25px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 10px 25px rgba(255, 42, 133, 0.4); border: none; width: 100%; text-align: center; margin-top: 30px; font-size: 1.1rem; cursor: pointer; }
-
-            .magic-sparkle { position: absolute; pointer-events: none; z-index: 9999; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); animation: sparkleFade 0.8s forwards linear; }
-            @keyframes sparkleFade { 0% { transform: scale(1) translateY(0) rotate(0deg); opacity: 1; } 100% { transform: scale(0) translateY(40px) rotate(180deg); opacity: 0; } }
-
-            .balloon-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: inherit; overflow: hidden; pointer-events: none; z-index: 5; }
-            .float-balloon { position: absolute; bottom: -80px; font-size: 2.8rem; cursor: pointer; user-select: none; pointer-events: auto; animation: floatUpCard 10s linear forwards; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2)); }
-            @keyframes floatUpCard { to { bottom: 110%; transform: rotate(20deg); } }
-
-            .golden-minute { background: linear-gradient(45deg, #ffd700, #ffaa00); color: #422000; padding: 15px; border-radius: 15px; font-weight: 800; font-size: 1.1rem; animation: pulse-gold 1s infinite; margin-bottom: 30px; display: none; box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3); position: relative; z-index: 10;}
-            .btn-music { position: fixed; bottom: max(25px, env(safe-area-inset-bottom)); right: 25px; width: 55px; height: 55px; border-radius: 50%; background: white; display: none; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 100; color: var(--accent); font-size: 1.3rem; transition: 0.3s; }
-            body.birthday-mode .btn-music { display: flex; animation: popIn 0.5s ease forwards; }
-            @keyframes popIn { 0% { transform: scale(0); } 80% { transform: scale(1.2); } 100% { transform: scale(1); } }
-
-            /* CUSTOM POPUPS */
-            .custom-popup-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); opacity: 0; transition: opacity 0.3s ease; }
-            .custom-popup-box { background: rgba(255, 255, 255, 0.95); padding: 30px 25px; border-radius: 25px; text-align: center; max-width: 85%; width: 340px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); transform: scale(0.8); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-            .custom-popup-text { font-size: 1.1rem; color: #333; font-weight: 600; margin-bottom: 25px; line-height: 1.5; }
-            .custom-popup-btn { background: linear-gradient(135deg, var(--accent), var(--primary)); color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: 700; width: 100%; box-shadow: 0 5px 15px rgba(255, 42, 133, 0.3); }
-            .vault-input { width: 100%; box-sizing: border-box; padding: 12px; border-radius: 15px; border: 2px solid rgba(138, 43, 226, 0.3); background: rgba(255,255,255,0.6); text-align: center; font-family: 'Outfit', sans-serif; font-weight: 600; outline: none; transition: 0.3s; margin-bottom: 15px; color: #333; font-size: 1rem; }
-            .vault-input:focus { border-color: var(--primary); background: white; }
-            .error-shake { animation: shake 0.4s; border-color: red !important; }
-
-            @media (max-width: 576px) {
-                .main-card { padding: 35px 20px; border-radius: 30px; } .main-title { font-size: 2.2rem; } .profile-wrapper { width: 170px; height: 170px; } .countdown-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } .unit-val { font-size: 2.1rem; } .details-box { gap: 10px; padding: 12px 20px; font-size: 0.95rem; flex-direction: column; text-align: center; width: 100%;} .gallery img, .gallery video { width: 110px; height: 110px; } .hints-container { flex-direction: column; gap: 12px; } .hint-box { width: 100%; padding: 15px; } .letter-view { padding: 30px 20px; } .letter-title { font-size: 2.8rem; } .envelope-icon { font-size: 6.5rem; } .wax-seal { width: 55px; height: 55px; font-size: 1.8rem; } .glass-panel { font-size: 0.95rem; padding: 25px 15px; } .stat-highlight { font-size: 1.2rem; } .hold-btn { padding: 12px 20px; width: 100%; } .float-balloon { font-size: 2.2rem; }
-            }
-        </style>
-    </head>
-    <body>
-
-        <div class="mesh"></div>
-        <canvas id="confetti-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:100;"></canvas>
-
-        <div id="customPopupOverlay" class="custom-popup-overlay">
-            <div class="custom-popup-box" onclick="event.stopPropagation()">
-                <div id="customPopupText" class="custom-popup-text"></div>
-                <button class="custom-popup-btn" onclick="closePopup()">Got it ✨</button>
-            </div>
+    <div id="customPopupOverlay" class="custom-popup-overlay">
+        <div class="custom-popup-box" onclick="event.stopPropagation()">
+            <div id="customPopupText" class="custom-popup-text"></div>
+            <button class="custom-popup-btn" onclick="closePopup()">Got it ✨</button>
         </div>
-
-        <div id="passwordPopupOverlay" class="custom-popup-overlay">
-            <div class="custom-popup-box" onclick="event.stopPropagation()">
-                <i class="fas fa-lock" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
-                <div class="custom-popup-text" style="margin-bottom: 15px;">
-                    Answer this to unlock your memory:<br><br>
-                    <span id="popupQuestionText" style="color: var(--primary-dark); font-weight: 800;"></span>
-                </div>
-                <input type="text" id="popupVaultInput" class="vault-input" placeholder="Type your answer...">
-                <div id="popupVaultResult" style="margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; display: none;"></div>
-                <button class="custom-popup-btn" onclick="checkPopupPassword()">Submit Answer</button>
-                <button class="custom-popup-btn" style="background: rgba(0,0,0,0.05); color: #555; box-shadow: none; margin-top: 10px;" onclick="closePasswordPopup()">Cancel</button>
-            </div>
-        </div>
-
-        <div class="btn-music" id="musicBtn"><i class="fas fa-music"></i></div>
-        <audio id="bdayAudio" loop><source src="happy-birthday-314197.mp3" type="audio/mpeg"></audio>
-
-        <div class="page-wrapper">
-            <div class="main-card">
-                
-                <div id="balloon-container" class="balloon-container"></div>
-                
-                <div class="before-content">
-                    <h2 class="subtitle">Anticipation</h2>
-                    <h1 class="main-title" style="font-size: 2.2rem;">Mokshhh's Big Day</h1>
-                    
-                    <div class="profile-wrapper" onclick="easterEggClick()">
-                        <img src="l.jpeg" class="profile-img" alt="Mokshhh">
-                    </div>
-
-                    <div class="details-box">
-                        <div><i class="fas fa-calendar-alt me-2" style="color:var(--accent)"></i>April 10th</div>
-                        <div><i class="fas fa-clock me-2" style="color:var(--accent)"></i><span id="displayTime">00:00</span></div>
-                    </div>
-                    <div id="popHint" class="pop-hint">
-                        💫 Catch the floating emojis before the countdown clock reaches zero! ⏳
-                    </div>
-
-                    <div class="countdown-grid">
-                        <div class="time-box"><span class="unit-val" id="d">00</span><span class="unit-label">Days</span></div>
-                        <div class="time-box"><span class="unit-val" id="h">00</span><span class="unit-label">Hrs</span></div>
-                        <div class="time-box"><span class="unit-val" id="m">00</span><span class="unit-label">Min</span></div>
-                        <div class="time-box"><span class="unit-val" id="s">00</span><span class="unit-label">Sec</span></div>
-                    </div>
-
-                    <div class="voice-note" id="teaserAudioBtn">
-                        <div class="voice-play-btn"><i class="fas fa-play" id="teaserIcon"></i></div>
-                        <div class="wave-anim" id="waveAnim">
-                            <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-                        </div>
-                        <span style="font-size: 0.9rem;">A message from me...</span>
-                        <audio id="teaserAudio" src="before.ogg"></audio>
-                    </div>
-                    
-                    <div class="glass-panel">
-                        <div class="life-stats-title">Our Beautiful Journey ✨</div>
-                        <div class="stat-line">
-                            Counting memories since we got close <span style="font-size: 0.85rem; font-weight:400; color: #888;"><br>(March 23, 2025)</span>:
-                            <span id="metDays" class="stat-highlight">LOADING...</span>
-                        </div>
-                        <div class="stat-line">
-                            Seconds the world has been brighter with you in it:
-                            <span id="liveSeconds" class="stat-highlight">LOADING...</span>
-                        </div>
-                        <div class="stat-footer">The best days of my life. 🤍</div>
-                    </div>
-                    
-                    <div class="secret-hold-container">
-                        <button id="holdBtn" class="hold-btn shadow-sm">
-                            <i class="fas fa-fingerprint me-2"></i>Press & Hold for a Secret
-                        </button>
-                        <div class="hold-progress-bar"><div id="holdProgress"></div></div>
-                        <div id="holdMessage" class="hold-message"></div>
-                    </div>
-
-                    <h3 style="font-size: 1.1rem; color: #555; margin-top: 40px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Secret Hints</h3>
-                    <div class="hints-container">
-                        <div class="hint-box" id="hint1" onclick="handleHintClick('hint1', 3, 1, 'What do we call each other the most?', 'Buddi', 'Hint #1: It fits in a small boxxx!')">
-                            <i class="fas fa-lock mb-2" style="font-size: 1.8rem; color: #ccc;"></i><span style="font-size: 0.8rem; color: #888; font-weight: 600;">Unlocks April 1</span>
-                        </div>
-                        <div class="hint-box" id="hint2" onclick="handleHintClick('hint2', 3, 5, 'What is the date I first visited your house (month/day)?', 'Aug 24', 'Hint #2: Tiny details, big shineee')">
-                            <i class="fas fa-lock mb-2" style="font-size: 1.8rem; color: #ccc;"></i><span style="font-size: 0.8rem; color: #888; font-weight: 600;">Unlocks April 5</span>
-                        </div>
-                        <div class="hint-box" id="hint3" onclick="handleHintClick('hint3', 3, 9, 'What do I most like to be called?', ['akhiluuu', 'akhii'], 'Hint #3: Get ready to feel a little extraaa!')">
-                            <i class="fas fa-lock mb-2" style="font-size: 1.8rem; color: #ccc;"></i><span style="font-size: 0.8rem; color: #888; font-weight: 600;">Unlocks April 9</span>
-                        </div>
-                    </div>
-                    
-                    <h3 style="font-size: 1.1rem; color: #555; margin-top: 40px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Swipe Our Memories</h3>
-                    <div class="gallery-wrapper">
-                        <div class="gallery">
-                            <video src="whatsapp-video-2026-03-08-at-61806m_yr8efUTF.mp4" autoplay loop muted playsinline onclick="openLightbox('whatsapp-video-2026-03-08-at-61806m_yr8efUTF.mp4', 'video')"></video>                        
-                            <img src="WhatsApp Image 2026-03-08 at 5.51.40 PM.jpeg" alt="Memory 1" onclick="openLightbox('WhatsApp Image 2026-03-08 at 5.51.40 PM.jpeg', 'image')">
-                            <img src="WhatsApp Image 2026-03-09 at 2.36.23 PM.jpeg" alt="Memory 2" onclick="openLightbox('WhatsApp Image 2026-03-09 at 2.36.23 PM.jpeg', 'image')">
-                            <img src="WhatsApp Image 2026-03-08 at 6.09.23 PM(1).jpeg" alt="Memory 4" onclick="openLightbox('WhatsApp Image 2026-03-08 at 6.09.23 PM(1).jpeg', 'image')">
-                            <img src="WhatsApp Image 2026-03-08 at 5.51.41 PM.jpeg" alt="Memory 5" onclick="openLightbox('WhatsApp Image 2026-03-08 at 5.51.41 PM.jpeg', 'image')">
-                            <video src="whatsapp-video-2026-03-08-at-61806-pm_hgYzCwyJ.mp4" autoplay loop muted playsinline onclick="openLightbox('whatsapp-video-2026-03-08-at-61806-pm_hgYzCwyJ.mp4', 'video')"></video>
-                            
-                        </div>
-                    </div>
-
-                    <div class="bottom-message" id="bottomMsg">
-                        Every second brings us closer to celebrating you. ❤️
-                        <span>(P.P.S. Make sure your volume is up when the timer hits zero! 🎶)</span>
-                    </div>
-                </div>
-
-                <div class="birthday-content">
-                    <div id="goldenMinuteBanner" class="golden-minute">
-                        ✨ IT IS YOUR EXACT BIRTH MINUTE! THE EXACT MOMENT YOU CAME INTO THE WORLD! ✨
-                    </div>
-                    <div id="envelopeView" class="envelope-container" onclick="openLetter()">
-                        <i class="fas fa-envelope envelope-icon"></i>
-                        <div class="wax-seal">M</div>
-                        <h2 style="font-family: 'Outfit'; font-weight: 800; margin-top: 15px; font-size: 2rem;">A Special Delivery</h2>
-                        <p class="seal-text">✨ Break the seal ✨</p>
-                    </div>
-                    <div id="letterView" class="letter-view">
-                        <h1 class="letter-title">Happy Birthday!</h1>
-                        <div class="letter-body">
-    <p>Dear Mokshhh,</p>
-    <p>Happy Birthday! 🎉 Today is completely about you.</p>
-    <p>I wanted to create this little digital page just to remind you how incredibly special you are. When I look back at all the pictures and the memories we’ve created, I can’t help but smile. You have this amazing ability to make even the most ordinary days feel special.</p>
-    <p>You are honestly one of the cutest people I have ever met—and also the person I feel closest to, someone I can share anything and everything with. And honestly, to me, you’ll always be that small kid under my eyes—someone I just want to protect. I still can’t believe how close we’ve become in such a short time, but I’m really grateful for it.</p>
-    <p>Making memories with you has made my B-Tech journey so much more fun and meaningful. From random conversations to deep talks, from silly jokes to even our little fights—every moment with you has been something I truly treasure.</p>
-    <p>I may not always say it out loud, but I genuinely love everything about you—who you are and everything you do. You’ve given me so many beautiful memories, and they’re something I’ll carry with me for the rest of my life.</p>
-    <p>And please don’t ever feel like you have to hide when you need me. No matter what the situation is, I’ll always be there for you. Even if we have small fights sometimes, if you ever feel low or need someone by your side, just remember—you have me.</p>
-    <p>Stay the same, Buddiiii—loud, annoying, caring, funny, and full of love. Never change that.</p>
-    <p>I’m really looking up to creating so many more memories with you, laughing at the same stupid things, and growing through everything together.</p>
-    <p>I hope this year brings you endless happiness, beautiful moments, and everything that makes you smile.</p>
-    <p style="font-style: italic;">
-        <strong style="font-size: 1.2rem;">
-            Once again, Happy Birthday to one of the most special people in my life. I’m truly grateful to have you. ❤️
-        </strong>
-    </p>
-
-    <p style="margin-top: 40px; text-align: right; font-style: italic;">
-        With all my love,<br>
-        <strong style="font-size: 1.3rem;">Akhiluuuuuu</strong>
-    </p>
-
-    <div class="text-center mt-5">
-        <a href="javascript:void(0)" class="gift-btn" onclick="openLightbox('Buddiiii.mp4', 'video')">
-            <i class="fas fa-gift me-2"></i> A Small Video for You
-        </a>
     </div>
-</div>
-                    </div>
-                </div>
+
+    <div id="passwordPopupOverlay" class="custom-popup-overlay">
+        <div class="custom-popup-box" onclick="event.stopPropagation()">
+            <i class="fas fa-lock" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
+            <div class="custom-popup-text" style="margin-bottom: 15px;">
+                Answer this to unlock your memory:<br><br>
+                <span id="popupQuestionText" style="color: var(--primary-dark); font-weight: 800;"></span>
             </div>
+            <input type="text" id="popupVaultInput" class="vault-input" placeholder="Type your answer...">
+            <div id="popupVaultResult" style="margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; display: none;"></div>
+            <button class="custom-popup-btn" onclick="checkPopupPassword()">Submit Answer</button>
+            <button class="custom-popup-btn" style="background: rgba(0,0,0,0.05); color: #555; box-shadow: none; margin-top: 10px;" onclick="closePasswordPopup()">Cancel</button>
         </div>
+    </div>
 
-        <div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content bg-transparent border-0">
-                    <div class="modal-body text-center position-relative p-0" id="lightboxBody">
-                        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2" data-bs-dismiss="modal" aria-label="Close" style="z-index: 1060; background-color: rgba(0,0,0,0.6); padding: 10px; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.5);" onclick="closeMedia()"></button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="btn-music" id="musicBtn"><i class="fas fa-music"></i></div>
+    <audio id="bdayAudio" loop><source src="happy-birthday-314197.mp3" type="audio/mpeg"></audio>
 
-        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-        <script>
-            const popupOverlay = document.getElementById('customPopupOverlay');
-            const popupText = document.getElementById('customPopupText');
-            const popupBox = document.querySelector('.custom-popup-box');
-
-            function showPopup(message) {
-                triggerHaptic(30); popupText.innerHTML = message; popupOverlay.style.display = 'flex';
-                setTimeout(() => { popupOverlay.style.opacity = '1'; popupBox.style.transform = 'scale(1)'; }, 10);
-            }
-
-            function closePopup() {
-                popupOverlay.style.opacity = '0'; popupBox.style.transform = 'scale(0.8)';
-                setTimeout(() => { popupOverlay.style.display = 'none'; }, 300);
-            }
-            popupOverlay.addEventListener('click', closePopup);
-
-            let currentHintData = null; 
-
-            function handleHintClick(id, month, day, questionText, secretAnswer, revealText) {
-                if(document.getElementById(id).innerText.includes('Unlocked')) return;
+    <div class="page-wrapper">
+        <div class="main-card">
+            
+            <div id="balloon-container" class="balloon-container"></div>
+            
+            <div class="before-content">
+                <h2 class="subtitle">Anticipation</h2>
+                <h1 class="main-title" style="font-size: 2.2rem;">Mokshhh's Big Day</h1>
                 
-                const now = new Date();
-                const unlockDate = new Date(now.getFullYear(), month, day);
+                <div class="profile-wrapper" onclick="easterEggClick()">
+                    <img src="l.jpeg" class="profile-img" alt="Mokshhh">
+                </div>
 
-                if (now >= unlockDate) {
-                    currentHintData = { id, secretAnswer, revealText };
-                    triggerHaptic(20);
-                    
-                    document.getElementById('popupQuestionText').innerText = questionText;
-                    document.getElementById('popupVaultInput').value = '';
-                    document.getElementById('popupVaultResult').style.display = 'none';
-                    document.getElementById('popupVaultInput').style.borderColor = "rgba(138, 43, 226, 0.3)";
-                    
-                    const popOverlay = document.getElementById('passwordPopupOverlay');
-                    const popBox = popOverlay.querySelector('.custom-popup-box');
-                    popOverlay.style.display = 'flex';
-                    setTimeout(() => { popOverlay.style.opacity = '1'; popBox.style.transform = 'scale(1)'; }, 10);
-                } else {
-                    triggerHaptic([50, 50, 50]); 
-                    const box = document.getElementById(id);
-                    box.classList.add('shake'); setTimeout(() => box.classList.remove('shake'), 400);
-                    const options = { month: 'long', day: 'numeric' };
-                    showPopup(`Nice try! This hint is securely locked until <br><br><b>${unlockDate.toLocaleDateString('en-US', options)}</b>.<br><br> Come back later! 🔒`);
-                }
-            }
+                <div class="details-box">
+                    <div><i class="fas fa-calendar-alt me-2" style="color:var(--accent)"></i>April 10th</div>
+                    <div><i class="fas fa-clock me-2" style="color:var(--accent)"></i><span id="displayTime">00:00</span></div>
+                </div>
+                <div id="popHint" class="pop-hint">
+                    💫 Catch the floating emojis before the countdown clock reaches zero! ⏳
+                </div>
 
-            function closePasswordPopup() {
+                <div class="countdown-grid">
+                    <div class="time-box"><span class="unit-val" id="d">00</span><span class="unit-label">Days</span></div>
+                    <div class="time-box"><span class="unit-val" id="h">00</span><span class="unit-label">Hrs</span></div>
+                    <div class="time-box"><span class="unit-val" id="m">00</span><span class="unit-label">Min</span></div>
+                    <div class="time-box"><span class="unit-val" id="s">00</span><span class="unit-label">Sec</span></div>
+                </div>
+
+                <div class="voice-note" id="teaserAudioBtn">
+                    <div class="voice-play-btn"><i class="fas fa-play" id="teaserIcon"></i></div>
+                    <div class="wave-anim" id="waveAnim">
+                        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                    </div>
+                    <span style="font-size: 0.9rem;">A message from me...</span>
+                    <audio id="teaserAudio" src="before.ogg"></audio>
+                </div>
+                
+                <div class="glass-panel">
+                    <div class="life-stats-title">Our Beautiful Journey ✨</div>
+                    <div class="stat-line">
+                        Counting memories since we got close <span style="font-size: 0.85rem; font-weight:400; color: #888;">
+(March 23, 2025)</span>:
+                        <span id="metDays" class="stat-highlight">LOADING...</span>
+                    </div>
+                    <div class="stat-line">
+                        Seconds the world has been brighter with you in it:
+                        <span id="liveSeconds" class="stat-highlight">LOADING...</span>
+                    </div>
+                    <div class="stat-footer">The best days of my life. 🤍</div>
+                </div>
+                
+                <div class="secret-hold-container">
+                    <button id="holdBtn" class="hold-btn shadow-sm">
+                        <i class="fas fa-fingerprint me-2"></i>Press & Hold for a Secret
+                    </button>
+                    <div class="hold-progress-bar"><div id="holdProgress"></div></div>
+                    <div id="holdMessage" class="hold-message"></div>
+                </div>
+
+                <h3 style="font-size: 1.1rem; color: #555; margin-top: 40px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Secret Hints</h3>
+                <div class="hints-container">
+                    <div class="hint-box" id="hint1" onclick="handleHintClick('hint1', 3, 1, 'What do we call each other the most?', 'Buddi', 'Hint #1: It fits in a small boxxx!')">
+                        <i class="fas fa-lock mb-2" style="font-size: 1.8rem; color: #ccc;"></i><span style="font-size: 0.8rem; color: #888; font-weight: 600;">Unlocks April 1</span>
+                    </div>
+                    <div class="hint-box" id="hint2" onclick="handleHintClick('hint2', 3, 5, 'What is the date I first visited your house (month/day)?', 'Aug 24', 'Hint #2: Tiny details, big shineee')">
+                        <i class="fas fa-lock mb-2" style="font-size: 1.8rem; color: #ccc;"></i><span style="font-size: 0.8rem; color: #888; font-weight: 600;">Unlocks April 5</span>
+                    </div>
+                    <div class="hint-box" id="hint3" onclick="handleHintClick('hint3', 3, 9, 'What do I most like to be called?', ['akhiluuu', 'akhii'], 'Hint #3: Get ready to feel a little extraaa!')">
+                        <i class="fas fa-lock mb-2" style="font-size: 1.8rem; color: #ccc;"></i><span style="font-size: 0.8rem; color: #888; font-weight: 600;">Unlocks April 9</span>
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 1.1rem; color: #555; margin-top: 40px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Swipe Our Memories</h3>
+                <div class="gallery-wrapper">
+                    <div class="gallery">
+                        <video src="whatsapp-video-2026-03-08-at-61806m_yr8efUTF.mp4" autoplay loop muted playsinline onclick="openLightbox('whatsapp-video-2026-03-08-at-61806m_yr8efUTF.mp4', 'video')"></video>                        
+                        <img src="WhatsApp Image 2026-03-08 at 5.51.40 PM.jpeg" alt="Memory 1" onclick="openLightbox('WhatsApp Image 2026-03-08 at 5.51.40 PM.jpeg', 'image')">
+                        <img src="WhatsApp Image 2026-03-09 at 2.36.23 PM.jpeg" alt="Memory 2" onclick="openLightbox('WhatsApp Image 2026-03-09 at 2.36.23 PM.jpeg', 'image')">
+                        <img src="WhatsApp Image 2026-03-08 at 6.09.23 PM(1).jpeg" alt="Memory 4" onclick="openLightbox('WhatsApp Image 2026-03-08 at 6.09.23 PM(1).jpeg', 'image')">
+                        <img src="WhatsApp Image 2026-03-08 at 5.51.41 PM.jpeg" alt="Memory 5" onclick="openLightbox('WhatsApp Image 2026-03-08 at 5.51.41 PM.jpeg', 'image')">
+                        <video src="whatsapp-video-2026-03-08-at-61806-pm_hgYzCwyJ.mp4" autoplay loop muted playsinline onclick="openLightbox('whatsapp-video-2026-03-08-at-61806-pm_hgYzCwyJ.mp4', 'video')"></video>
+                        
+                    </div>
+                </div>
+
+                <div class="bottom-message" id="bottomMsg">
+                    Every second brings us closer to celebrating you. ❤️
+                    <span>(P.P.S. Make sure your volume is up when the timer hits zero! 🎶)</span>
+                </div>
+            </div>
+
+            <div class="birthday-content">
+                <div id="goldenMinuteBanner" class="golden-minute">
+                    ✨ IT IS YOUR EXACT BIRTH MINUTE! THE EXACT MOMENT YOU CAME INTO THE WORLD! ✨
+                </div>
+                <div id="envelopeView" class="envelope-container" onclick="openLetter()">
+                    <i class="fas fa-envelope envelope-icon"></i>
+                    <div class="wax-seal">M</div>
+                    <h2 style="font-family: 'Outfit'; font-weight: 800; margin-top: 15px; font-size: 2rem;">A Special Delivery</h2>
+                    <p class="seal-text">✨ Break the seal ✨</p>
+                </div>
+                <div id="letterView" class="letter-view">
+                    <h1 class="letter-title">Happy Birthday!</h1>
+                    <div class="letter-body">
+<p>Dear Mokshhh,</p>
+<p>Happy Birthday! 🎉 Today is completely about you.</p>
+<p>I wanted to create this little digital page just to remind you how incredibly special you are. When I look back at all the pictures and the memories we’ve created, I can’t help but smile. You have this amazing ability to make even the most ordinary days feel special.</p>
+<p>You are honestly one of the cutest people I have ever met—and also the person I feel closest to, someone I can share anything and everything with. And honestly, to me, you’ll always be that small kid under my eyes—someone I just want to protect. I still can’t believe how close we’ve become in such a short time, but I’m really grateful for it.</p>
+<p>Making memories with you has made my B-Tech journey so much more fun and meaningful. From random conversations to deep talks, from silly jokes to even our little fights—every moment with you has been something I truly treasure.</p>
+<p>I may not always say it out loud, but I genuinely love everything about you—who you are and everything you do. You’ve given me so many beautiful memories, and they’re something I’ll carry with me for the rest of my life.</p>
+<p>And please don’t ever feel like you have to hide when you need me. No matter what the situation is, I’ll always be there for you. Even if we have small fights sometimes, if you ever feel low or need someone by your side, just remember—you have me.</p>
+<p>Stay the same, Buddiiii—loud, annoying, caring, funny, and full of love. Never change that.</p>
+<p>I’m really looking up to creating so many more memories with you, laughing at the same stupid things, and growing through everything together.</p>
+<p>I hope this year brings you endless happiness, beautiful moments, and everything that makes you smile.</p>
+<p style="font-style: italic;">
+    <strong style="font-size: 1.2rem;">
+        Once again, Happy Birthday to one of the most special people in my life. I’m truly grateful to have you. ❤️
+    </strong>
+</p>
+
+<p style="margin-top: 40px; text-align: right; font-style: italic;">
+    With all my love,<br>
+    <strong style="font-size: 1.3rem;">Akhiluuuuuu</strong>
+</p>
+
+<div class="text-center mt-5">
+    <a href="javascript:void(0)" class="gift-btn" onclick="openLightbox('Buddiiii.mp4', 'video')">
+        <i class="fas fa-gift me-2"></i> A Small Video for You
+    </a>
+</div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-body text-center position-relative p-0" id="lightboxBody">
+                    <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2" data-bs-dismiss="modal" aria-label="Close" style="z-index: 1060; background-color: rgba(0,0,0,0.6); padding: 10px; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.5);" onclick="closeMedia()"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        const popupOverlay = document.getElementById('customPopupOverlay');
+        const popupText = document.getElementById('customPopupText');
+        const popupBox = document.querySelector('.custom-popup-box');
+
+        function showPopup(message) {
+            triggerHaptic(30); popupText.innerHTML = message; popupOverlay.style.display = 'flex';
+            setTimeout(() => { popupOverlay.style.opacity = '1'; popupBox.style.transform = 'scale(1)'; }, 10);
+        }
+
+        function closePopup() {
+            popupOverlay.style.opacity = '0'; popupBox.style.transform = 'scale(0.8)';
+            setTimeout(() => { popupOverlay.style.display = 'none'; }, 300);
+        }
+        popupOverlay.addEventListener('click', closePopup);
+
+        let currentHintData = null; 
+
+        function handleHintClick(id, month, day, questionText, secretAnswer, revealText) {
+            if(document.getElementById(id).innerText.includes('Unlocked')) return;
+            
+            const now = new Date();
+            const unlockDate = new Date(now.getFullYear(), month, day);
+
+            if (now >= unlockDate) {
+                currentHintData = { id, secretAnswer, revealText };
+                triggerHaptic(20);
+                
+                document.getElementById('popupQuestionText').innerText = questionText;
+                document.getElementById('popupVaultInput').value = '';
+                document.getElementById('popupVaultResult').style.display = 'none';
+                document.getElementById('popupVaultInput').style.borderColor = "rgba(138, 43, 226, 0.3)";
+                
                 const popOverlay = document.getElementById('passwordPopupOverlay');
                 const popBox = popOverlay.querySelector('.custom-popup-box');
-                popOverlay.style.opacity = '0'; popBox.style.transform = 'scale(0.8)';
-                setTimeout(() => { popOverlay.style.display = 'none'; currentHintData = null; }, 300);
+                popOverlay.style.display = 'flex';
+                setTimeout(() => { popOverlay.style.opacity = '1'; popBox.style.transform = 'scale(1)'; }, 10);
+            } else {
+                triggerHaptic([50, 50, 50]); 
+                const box = document.getElementById(id);
+                box.classList.add('shake'); setTimeout(() => box.classList.remove('shake'), 400);
+                const options = { month: 'long', day: 'numeric' };
+                showPopup(`Nice try! This hint is securely locked until <br><br><b>${unlockDate.toLocaleDateString('en-US', options)}</b>.<br><br> Come back later! 🔒`);
             }
+        }
 
-            function checkPopupPassword() {
-                if(!currentHintData) return;
-                const input = document.getElementById('popupVaultInput');
-                const result = document.getElementById('popupVaultResult');
-                const userAnswer = input.value.toLowerCase().trim();
-                let isCorrect = false;
+        function closePasswordPopup() {
+            const popOverlay = document.getElementById('passwordPopupOverlay');
+            const popBox = popOverlay.querySelector('.custom-popup-box');
+            popOverlay.style.opacity = '0'; popBox.style.transform = 'scale(0.8)';
+            setTimeout(() => { popOverlay.style.display = 'none'; currentHintData = null; }, 300);
+        }
 
-                if (Array.isArray(currentHintData.secretAnswer)) {
-                    isCorrect = currentHintData.secretAnswer.some(ans => userAnswer === ans.toLowerCase().trim());
-                } else {
-                    isCorrect = userAnswer === currentHintData.secretAnswer.toLowerCase().trim();
-                }
-                
-                if(isCorrect) {
-                    triggerHaptic([50, 50, 100]);
-                    input.style.borderColor = "var(--accent)";
-                    result.style.display = "block";
-                    result.style.color = "var(--accent)";
-                    result.innerHTML = "Correct! Unlocking memory... 💖"; 
-                    confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }});
-                    
-                    const hintBox = document.getElementById(currentHintData.id);
-                    const unlockedHTML = `<div style="color: var(--accent); font-weight: 800; font-size: 1.2rem; margin-bottom: 5px;">Unlocked!</div><span style="font-size:0.9rem; color: #333; font-weight: 700;">${currentHintData.revealText}</span>`;
-                    
-                    hintBox.innerHTML = unlockedHTML;
-                    hintBox.style.background = "white";
+        function checkPopupPassword() {
+            if(!currentHintData) return;
+            const input = document.getElementById('popupVaultInput');
+            const result = document.getElementById('popupVaultResult');
+            const userAnswer = input.value.toLowerCase().trim();
+            let isCorrect = false;
 
-                    // Save to localStorage
-                    let savedHints = JSON.parse(localStorage.getItem('mokshhhHints')) || {};
-                    savedHints[currentHintData.id] = currentHintData.revealText;
-                    localStorage.setItem('mokshhhHints', JSON.stringify(savedHints));
-
-                    setTimeout(() => { closePasswordPopup(); }, 1500);
-                } else {
-                    triggerHaptic([40, 20, 40]);
-                    input.classList.add('error-shake');
-                    result.style.display = "block";
-                    result.style.color = "red";
-                    result.innerHTML = "Incorrect answer! Think harder. ❌";
-                    setTimeout(() => {
-                        input.classList.remove('error-shake');
-                        result.style.display = "none";
-                    }, 1500);
-                }
+            if (Array.isArray(currentHintData.secretAnswer)) {
+                isCorrect = currentHintData.secretAnswer.some(ans => userAnswer === ans.toLowerCase().trim());
+            } else {
+                isCorrect = userAnswer === currentHintData.secretAnswer.toLowerCase().trim();
             }
             
-            function triggerHaptic(pattern) { if ('vibrate' in navigator) navigator.vibrate(pattern); }
-            const mainCard = document.querySelector('.main-card');
-            if (window.innerWidth > 768) {
-                window.addEventListener('deviceorientation', (e) => {
-                    if (!e.beta || !e.gamma) return;
-                    let tiltX = Math.max(-8, Math.min(8, e.beta - 40));
-                    let tiltY = Math.max(-8, Math.min(8, e.gamma));
-                    let baseScale = document.body.classList.contains('birthday-mode') ? 1.01 : 1;
-                    mainCard.style.transform =
-                    `perspective(1000px) scale(${baseScale}) rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
-                });
-            }
-            function spawnSparkle(x, y) {
-                const sparkle = document.createElement('div'); sparkle.className = 'magic-sparkle';
-                sparkle.style.left = (x - 5) + 'px'; sparkle.style.top = (y - 5) + 'px';
-                const colors = ['#ff2a85', '#8a2be2', '#ff75b3', '#ffffff'];
-                sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                sparkle.style.boxShadow = `0 0 10px ${sparkle.style.background}`;
-                document.body.appendChild(sparkle); setTimeout(() => sparkle.remove(), 800);
-            }
-            document.addEventListener('touchmove', (e) => { if(Math.random() > 0.4) spawnSparkle(e.touches[0].pageX, e.touches[0].pageY); }, {passive: true});
-            const birthYear = 2006; const bMonth = 3    ; const bDay = 10; const bHour = 0; const bMin = 0;  
-            let ampm = bHour >= 12 ? 'PM' : 'AM'; let displayHour = bHour % 12; displayHour = displayHour ? displayHour : 12; 
-            let displayMin = bMin < 10 ? '0' + bMin : bMin;
-            document.getElementById('displayTime').innerText = '1:10 PM';
-            const exactBirthDateObject = new Date(birthYear, bMonth, bDay, bHour, bMin, 0);
-            let clickCount = 0; let clickTimer;
-            function easterEggClick() {
-                clickCount++; clearTimeout(clickTimer);
-                if (clickCount === 5) { showPopup("Stop tapping my face, Mokshhh! You still have to wait! 🐇✨"); clickCount = 0; }
-                clickTimer = setTimeout(() => clickCount = 0, 1500); 
-            }
-
-            const teaserBtn = document.getElementById('teaserAudioBtn');
-            const teaserAudio = document.getElementById('teaserAudio');
-            const teaserIcon = document.getElementById('teaserIcon');
-            teaserBtn.onclick = () => {
-                if(teaserAudio.paused) {
-                    teaserAudio.play().catch(() => showPopup("Audio failed to play. Have you added your .ogg file?"));
-                    teaserIcon.classList.replace('fa-play', 'fa-pause'); teaserBtn.classList.add('playing');
-                } else {
-                    teaserAudio.pause(); teaserIcon.classList.replace('fa-pause', 'fa-play'); teaserBtn.classList.remove('playing');
-                }
-            };
-            teaserAudio.onended = () => { teaserIcon.classList.replace('fa-pause', 'fa-play'); teaserBtn.classList.remove('playing'); };
-
-            const holdBtn = document.getElementById('holdBtn'); const holdProgress = document.getElementById('holdProgress');
-            const holdProgressBar = document.querySelector('.hold-progress-bar'); const holdMessage = document.getElementById('holdMessage');
-            let holdTimer; let progress = 0; let isRevealed = false;
-
-            const startHold = (e) => {
-                if(isRevealed) return; if(e.cancelable) e.preventDefault(); 
-                holdProgressBar.style.opacity = '1'; holdMessage.innerText = "Keep holding..."; triggerHaptic(20); 
-                holdTimer = setInterval(() => {
-                    progress += 2; holdProgress.style.width = progress + '%'; triggerHaptic(10); 
-                    if(progress >= 100) {
-                        clearInterval(holdTimer); isRevealed = true; holdProgressBar.style.opacity = '0';
-                        holdBtn.innerHTML = "<i class='fas fa-heart me-2'></i>Secret Revealed!";
-                        holdBtn.style.background = "#28a745"; holdBtn.style.boxShadow = "0 10px 25px rgba(40, 167, 69, 0.4)";
-                        triggerHaptic([100, 50, 200]); 
-                        holdMessage.innerHTML = "You're my absolute favorite. Now go back to waiting! 😉❤️";
-                        confetti({ particleCount: 60, spread: 70, origin: { y: 0.7 }});
-                    }
-                }, 50);
-            };
-
-            const stopHold = (e) => {
-                if(isRevealed) return; if(e.cancelable) e.preventDefault(); clearInterval(holdTimer);
-                if(progress > 0 && progress < 100) holdMessage.innerText = "You let go too soon! Patience, Mokshhh... 😏";
-                progress = 0; holdProgress.style.width = '0%';
-                setTimeout(() => { if(!isRevealed && progress === 0) holdProgressBar.style.opacity = '0'; }, 1500);
-            };
-            holdBtn.addEventListener('mousedown', startHold); holdBtn.addEventListener('mouseup', stopHold); holdBtn.addEventListener('mouseleave', stopHold); holdBtn.addEventListener('touchstart', startHold, {passive: false}); holdBtn.addEventListener('touchend', stopHold, {passive: false});
-
-            const balloonContainer = document.getElementById('balloon-container');
-            let popped = 0; const emojis = ['🎉', '💖', '✨','🎈'];
-            setInterval(() => {
-                if (document.body.classList.contains('birthday-mode')) return; 
-                const b = document.createElement('div'); b.className = 'float-balloon';
-                b.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            if(isCorrect) {
+                triggerHaptic([50, 50, 100]);
+                input.style.borderColor = "var(--accent)";
+                result.style.display = "block";
+                result.style.color = "var(--accent)";
+                result.innerHTML = "Correct! Unlocking memory... 💖"; 
+                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }});
                 
-                b.style.left = Math.random() * 80 + 10 + '%'; 
-                b.style.animationDuration = (Math.random() * 4 + 6) + 's'; 
+                const hintBox = document.getElementById(currentHintData.id);
+                const unlockedHTML = `<div style="color: var(--accent); font-weight: 800; font-size: 1.2rem; margin-bottom: 5px;">Unlocked!</div><span style="font-size:0.9rem; color: #333; font-weight: 700;">${currentHintData.revealText}</span>`;
                 
-                balloonContainer.appendChild(b);
-                
-                const popBalloon = (e) => {
-                    if(e.cancelable) e.preventDefault();
-                    popped++; 
-                    triggerHaptic(40); 
-                    
-                    const hintEl = document.getElementById('popHint');
-                    if (hintEl && hintEl.style.opacity !== '0') {
-                        hintEl.style.opacity = '0';
-                        setTimeout(() => {
-                            hintEl.style.display = 'none'; 
-                        }, 500); 
-                    }
+                hintBox.innerHTML = unlockedHTML;
+                hintBox.style.background = "white";
 
-                    let clientX = e.clientX || (e.touches && e.touches[0].clientX); 
-                    let clientY = e.clientY || (e.touches && e.touches[0].clientY);
-                    confetti({ particleCount: 20, spread: 40, origin: { x: clientX/window.innerWidth, y: clientY/window.innerHeight }});
-                    b.remove();
-                    
-                    if(popped === 5) showPopup("5 balloons popped! You're really bored waiting, aren't you? 😂");
-                    if(popped === 10) showPopup("10 balloons! Okay, you are officially the balloon popping champion. 🏆");
-                };
-                b.addEventListener('mousedown', popBalloon); b.addEventListener('touchstart', popBalloon, {passive: false});
-                setTimeout(() => b.remove(), 10000); 
-            }, 3500);
-
-            // ==============================================
-            // DYNAMIC LIGHTBOX (HANDLES IMAGES & VIDEOS)
-            // ==============================================
-            function openLightbox(src, type) { 
-                const body = document.getElementById('lightboxBody');
-                // Clear previous content but keep the close button
-                body.innerHTML = '<button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2" data-bs-dismiss="modal" aria-label="Close" style="z-index: 1060; background-color: rgba(0,0,0,0.6); padding: 10px; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.5);" onclick="closeMedia()"></button>';
-                
-                if(type === 'video') {
-                    body.innerHTML += `<video id="popupMedia" src="${src}" autoplay controls playsinline class="img-fluid rounded-4 shadow-lg border border-white border-3" style="width: 100%; max-height: 75vh; object-fit: contain; background: #000;"></video>`;
-                } else {
-                    body.innerHTML += `<img id="popupMedia" src="${src}" class="img-fluid rounded-4 shadow-lg border border-white border-3" style="width: 100%; max-height: 75vh; object-fit: contain; background: #000;">`;
-                }
-                
-                new bootstrap.Modal(document.getElementById('galleryModal')).show(); 
-            }
-
-            // Stops video audio if they close the modal while it's playing
-            function closeMedia() {
-                const media = document.getElementById('popupMedia');
-                if(media && media.tagName === 'VIDEO') {
-                    media.pause();
-                }
-            }
-            // Also stop video if they click outside the modal to close it
-            document.getElementById('galleryModal').addEventListener('hidden.bs.modal', function () {
-                closeMedia();
-            });
-
-            const audio = document.getElementById('bdayAudio');
-            function fadeInAudio() {
-                audio.volume = 0; 
-                audio.play().then(() => {
-                    document.querySelector('#musicBtn i').classList.replace('fa-music', 'fa-pause'); let vol = 0;
-                    let fadeInterval = setInterval(() => { if (vol < 1.0) { vol += 0.05; audio.volume = Math.min(vol, 1); } else { clearInterval(fadeInterval); } }, 150); 
-                }).catch(() => {
-                    document.addEventListener('click', () => { audio.volume = 1; audio.play(); document.querySelector('#musicBtn i').classList.replace('fa-music', 'fa-pause'); }, { once: true });
-                    document.addEventListener('touchstart', () => { audio.volume = 1; audio.play(); document.querySelector('#musicBtn i').classList.replace('fa-music', 'fa-pause'); }, { once: true });
-                });
-            }
-
-            let goldenMinuteTriggered = false; let hasTriggered = false;
-            function triggerGoldenMinute() {
-                if(goldenMinuteTriggered) return; goldenMinuteTriggered = true; document.getElementById('goldenMinuteBanner').style.display = 'block';
-                const end = Date.now() + (60 * 1000); 
-                (function frame() { confetti({ particleCount: 3, angle: 60, spread: 60, origin: { x: 0 }, colors: ['#ffd700', '#ffaa00', '#ffffff'] }); confetti({ particleCount: 3, angle: 120, spread: 60, origin: { x: 1 }, colors: ['#ffd700', '#ffaa00', '#ffffff'] }); if (Date.now() < end) requestAnimationFrame(frame); }());
-            }
-
-            function update() {
-                const now = new Date(); let target = new Date(now.getFullYear(), bMonth, bDay, bHour, bMin);
-                if (target < now && (now - target) > 86400000) target.setFullYear(now.getFullYear() + 1);
-                const diff = target - now;
-
-                if (!document.body.classList.contains('birthday-mode')) {
-                    const totalLifeSecs = Math.floor((now - exactBirthDateObject) / 1000);
-                    const daysSinceMet = Math.floor((now - new Date(2025, 2, 23)) / (1000 * 60 * 60 * 24));
-                    document.getElementById('liveSeconds').innerText = totalLifeSecs.toLocaleString();
-                    document.getElementById('metDays').innerText = daysSinceMet >= 0 ? daysSinceMet.toLocaleString() + " magical days" : "Waiting for our day... ✨";
-                }
-
-                if (diff <= 0) {
-                    document.body.classList.add('birthday-mode');
-                    if (now.getMonth() === bMonth && now.getDate() === bDay && now.getHours() === bHour && now.getMinutes() === bMin) triggerGoldenMinute();
-                    else document.getElementById('goldenMinuteBanner').style.display = 'none';
-                    if (!hasTriggered) { hasTriggered = true; fadeInAudio(); confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } }); }
-                    return;
-                }
-
-                document.getElementById('d').innerText = Math.floor(diff / 86400000); document.getElementById('h').innerText = Math.floor((diff / 3600000) % 24).toString().padStart(2, '0');
-                document.getElementById('m').innerText = Math.floor((diff / 60000) % 60).toString().padStart(2, '0');
-                document.getElementById('s').innerText = Math.floor((diff / 1000) % 60).toString().padStart(2, '0');
-            }
-
-            function openLetter() {
-                triggerHaptic([100, 50, 100, 50, 200]); 
-                document.getElementById('envelopeView').style.display = 'none'; document.getElementById('letterView').style.display = 'block';
-                confetti({ particleCount: 200, spread: 90, origin: { y: 0.6 }, colors: ['#ff2a85', '#8a2be2', '#ffffff', '#ffd700'] });
-            }
-
-            document.getElementById('musicBtn').onclick = () => { if (audio.paused) { audio.volume = 1; audio.play(); document.querySelector('#musicBtn i').classList.replace('fa-music', 'fa-pause'); } else { audio.pause(); document.querySelector('#musicBtn i').classList.replace('fa-pause', 'fa-music'); } };
-
-            // --- Load hints from local storage on load ---
-            function initHints() {
-                const now = new Date();
-                let target = new Date(now.getFullYear(), bMonth, bDay, bHour, bMin);
-                
-                // Clear memory if it's more than 24 hours past the birthday
-                if (target < now && (now - target) > 86400000) {
-                    localStorage.removeItem('mokshhhHints');
-                    return; 
-                }
-                
+                // Save to localStorage
                 let savedHints = JSON.parse(localStorage.getItem('mokshhhHints')) || {};
-                for (let id in savedHints) {
-                    const hintBox = document.getElementById(id);
-                    if (hintBox) {
-                        hintBox.innerHTML = `<div style="color: var(--accent); font-weight: 800; font-size: 1.2rem; margin-bottom: 5px;">Unlocked!</div><span style="font-size:0.9rem; color: #333; font-weight: 700;">${savedHints[id]}</span>`;
-                        hintBox.style.background = "white";
-                    }
+                savedHints[currentHintData.id] = currentHintData.revealText;
+                localStorage.setItem('mokshhhHints', JSON.stringify(savedHints));
+
+                setTimeout(() => { closePasswordPopup(); }, 1500);
+            } else {
+                triggerHaptic([40, 20, 40]);
+                input.classList.add('error-shake');
+                result.style.display = "block";
+                result.style.color = "red";
+                result.innerHTML = "Incorrect answer! Think harder. ❌";
+                setTimeout(() => {
+                    input.classList.remove('error-shake');
+                    result.style.display = "none";
+                }, 1500);
+            }
+        }
+        
+        function triggerHaptic(pattern) { if ('vibrate' in navigator) navigator.vibrate(pattern); }
+        const mainCard = document.querySelector('.main-card');
+        if (window.innerWidth > 768) {
+            window.addEventListener('deviceorientation', (e) => {
+                if (!e.beta || !e.gamma) return;
+                let tiltX = Math.max(-8, Math.min(8, e.beta - 40));
+                let tiltY = Math.max(-8, Math.min(8, e.gamma));
+                let baseScale = document.body.classList.contains('birthday-mode') ? 1.01 : 1;
+                mainCard.style.transform =
+                `perspective(1000px) scale(${baseScale}) rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
+            });
+        }
+        function spawnSparkle(x, y) {
+            const sparkle = document.createElement('div'); sparkle.className = 'magic-sparkle';
+            sparkle.style.left = (x - 5) + 'px'; sparkle.style.top = (y - 5) + 'px';
+            const colors = ['#ff2a85', '#8a2be2', '#ff75b3', '#ffffff'];
+            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            sparkle.style.boxShadow = `0 0 10px ${sparkle.style.background}`;
+            document.body.appendChild(sparkle); setTimeout(() => sparkle.remove(), 800);
+        }
+        document.addEventListener('touchmove', (e) => { if(Math.random() > 0.4) spawnSparkle(e.touches[0].pageX, e.touches[0].pageY); }, {passive: true});
+        const birthYear = 2006; const bMonth = 3    ; const bDay = 10; const bHour = 0; const bMin = 0;  
+        let ampm = bHour >= 12 ? 'PM' : 'AM'; let displayHour = bHour % 12; displayHour = displayHour ? displayHour : 12; 
+        let displayMin = bMin < 10 ? '0' + bMin : bMin;
+        document.getElementById('displayTime').innerText = '1:10 PM';
+        const exactBirthDateObject = new Date(birthYear, bMonth, bDay, bHour, bMin, 0);
+        let clickCount = 0; let clickTimer;
+        function easterEggClick() {
+            clickCount++; clearTimeout(clickTimer);
+            if (clickCount === 5) { showPopup("Stop tapping my face, Mokshhh! You still have to wait! 🐇✨"); clickCount = 0; }
+            clickTimer = setTimeout(() => clickCount = 0, 1500); 
+        }
+
+        const teaserBtn = document.getElementById('teaserAudioBtn');
+        const teaserAudio = document.getElementById('teaserAudio');
+        const teaserIcon = document.getElementById('teaserIcon');
+        teaserBtn.onclick = () => {
+            if(teaserAudio.paused) {
+                teaserAudio.play().catch(() => showPopup("Audio failed to play. Have you added your .ogg file?"));
+                teaserIcon.classList.replace('fa-play', 'fa-pause'); teaserBtn.classList.add('playing');
+            } else {
+                teaserAudio.pause(); teaserIcon.classList.replace('fa-pause', 'fa-play'); teaserBtn.classList.remove('playing');
+            }
+        };
+        teaserAudio.onended = () => { teaserIcon.classList.replace('fa-pause', 'fa-play'); teaserBtn.classList.remove('playing'); };
+
+        const holdBtn = document.getElementById('holdBtn'); const holdProgress = document.getElementById('holdProgress');
+        const holdProgressBar = document.querySelector('.hold-progress-bar'); const holdMessage = document.getElementById('holdMessage');
+        let holdTimer; let progress = 0; let isRevealed = false;
+
+        const startHold = (e) => {
+            if(isRevealed) return; if(e.cancelable) e.preventDefault(); 
+            holdProgressBar.style.opacity = '1'; holdMessage.innerText = "Keep holding..."; triggerHaptic(20); 
+            holdTimer = setInterval(() => {
+                progress += 2; holdProgress.style.width = progress + '%'; triggerHaptic(10); 
+                if(progress >= 100) {
+                    clearInterval(holdTimer); isRevealed = true; holdProgressBar.style.opacity = '0';
+                    holdBtn.innerHTML = "<i class='fas fa-heart me-2'></i>Secret Revealed!";
+                    holdBtn.style.background = "#28a745"; holdBtn.style.boxShadow = "0 10px 25px rgba(40, 167, 69, 0.4)";
+                    triggerHaptic([100, 50, 200]); 
+                    holdMessage.innerHTML = "You're my absolute favorite. Now go back to waiting! 😉❤️";
+                    confetti({ particleCount: 60, spread: 70, origin: { y: 0.7 }});
                 }
+            }, 50);
+        };
+
+        const stopHold = (e) => {
+            if(isRevealed) return; if(e.cancelable) e.preventDefault(); clearInterval(holdTimer);
+            if(progress > 0 && progress < 100) holdMessage.innerText = "You let go too soon! Patience, Mokshhh... 😏";
+            progress = 0; holdProgress.style.width = '0%';
+            setTimeout(() => { if(!isRevealed && progress === 0) holdProgressBar.style.opacity = '0'; }, 1500);
+        };
+        holdBtn.addEventListener('mousedown', startHold); holdBtn.addEventListener('mouseup', stopHold); holdBtn.addEventListener('mouseleave', stopHold); holdBtn.addEventListener('touchstart', startHold, {passive: false}); holdBtn.addEventListener('touchend', stopHold, {passive: false});
+
+        const balloonContainer = document.getElementById('balloon-container');
+        let popped = 0; const emojis = ['🎉', '💖', '✨','🎈'];
+        setInterval(() => {
+            if (document.body.classList.contains('birthday-mode')) return; 
+            const b = document.createElement('div'); b.className = 'float-balloon';
+            b.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            b.style.left = Math.random() * 80 + 10 + '%'; 
+            b.style.animationDuration = (Math.random() * 4 + 6) + 's'; 
+            
+            balloonContainer.appendChild(b);
+            
+            const popBalloon = (e) => {
+                if(e.cancelable) e.preventDefault();
+                popped++; 
+                triggerHaptic(40); 
+                
+                const hintEl = document.getElementById('popHint');
+                if (hintEl && hintEl.style.opacity !== '0') {
+                    hintEl.style.opacity = '0';
+                    setTimeout(() => {
+                        hintEl.style.display = 'none'; 
+                    }, 500); 
+                }
+
+                let clientX = e.clientX || (e.touches && e.touches[0].clientX); 
+                let clientY = e.clientY || (e.touches && e.touches[0].clientY);
+                confetti({ particleCount: 20, spread: 40, origin: { x: clientX/window.innerWidth, y: clientY/window.innerHeight }});
+                b.remove();
+                
+                if(popped === 5) showPopup("5 balloons popped! You're really bored waiting, aren't you? 😂");
+                if(popped === 10) showPopup("10 balloons! Okay, you are officially the balloon popping champion. 🏆");
+            };
+            b.addEventListener('mousedown', popBalloon); b.addEventListener('touchstart', popBalloon, {passive: false});
+            setTimeout(() => b.remove(), 10000); 
+        }, 3500);
+
+        // ==============================================
+        // DYNAMIC LIGHTBOX (HANDLES MUSIC PAUSE/RESUME)
+        // ==============================================
+        function openLightbox(src, type) { 
+            const body = document.getElementById('lightboxBody');
+            const bdayAudio = document.getElementById('bdayAudio');
+
+            // Clear previous content but keep the close button
+            body.innerHTML = '<button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2" data-bs-dismiss="modal" aria-label="Close" style="z-index: 1060; background-color: rgba(0,0,0,0.6); padding: 10px; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.5);" onclick="closeMedia()"></button>';
+            
+            if(type === 'video') {
+                // Pause background music if it's playing
+                if (!bdayAudio.paused) {
+                    bdayAudio.pause();
+                    document.querySelector('#musicBtn i').classList.replace('fa-pause', 'fa-music');
+                }
+
+                body.innerHTML += `<video id="popupMedia" src="${src}" autoplay controls playsinline class="img-fluid rounded-4 shadow-lg border border-white border-3" style="width: 100%; max-height: 75vh; object-fit: contain; background: #000;"></video>`;
+                
+                // Resume music automatically when the video finishes
+                const videoElement = document.getElementById('popupMedia');
+                videoElement.onended = () => {
+                    bdayAudio.play();
+                    document.querySelector('#musicBtn i').classList.replace('fa-music', 'fa-pause');
+                };
+            } else {
+                body.innerHTML += `<img id="popupMedia" src="${src}" class="img-fluid rounded-4 shadow-lg border border-white border-3" style="width: 100%; max-height: 75vh; object-fit: contain; background: #000;">`;
+            }
+            
+            new bootstrap.Modal(document.getElementById('galleryModal')).show(); 
+        }
+
+        // Play the background music again when the media is closed
+        function closeMedia() {
+            const media = document.getElementById('popupMedia');
+            const bdayAudio = document.getElementById('bdayAudio');
+
+            if(media && media.tagName === 'VIDEO') {
+                media.pause();
             }
 
-            initHints();
+            // Always try to resume music if we are in birthday mode
+            if (document.body.classList.contains('birthday-mode')) {
+                bdayAudio.play();
+                document.querySelector('#musicBtn i').classList.replace('fa-music', 'fa-pause');
+            }
+        }
 
-            setInterval(update, 1000); update();
-        </script>
-    </body>
-    </html>
+        // Also stop video and restart music if they click outside the modal
+        document.getElementById('galleryModal').addEventListener('hidden.bs.modal', function () {
+            closeMedia();
+        });
+
+        const audio = document.getElementById('bdayAudio');
+        function fadeInAudio() {
+            audio.volume = 0; 
+            audio.play().then(() => {
+                document.querySelector('#musicBtn i').classList.replace('fa-music', 'fa-pause'); let vol = 0;
+                let fadeInterval = setInterval(() => { if (vol < 1.0) { vol += 0.05; audio.volume = Math.min(vol, 1); } else { clearInterval(fadeInterval); } }, 150); 
+            }).catch(() => {
+                document.addEventListener('click', () => { audio.volume = 1; audio.play(); document.querySelector('#musicBtn i').classList.replace('fa-music', 'fa-pause'); }, { once: true });
+                document.addEventListener('touchstart', () => { audio.volume = 1; audio.play(); document.querySelector('#musicBtn i').classList.replace('fa-music', 'fa-pause'); }, { once: true });
+            });
+        }
+
+        let goldenMinuteTriggered = false; let hasTriggered = false;
+        function triggerGoldenMinute() {
+            if(goldenMinuteTriggered) return; goldenMinuteTriggered = true; document.getElementById('goldenMinuteBanner').style.display = 'block';
+            const end = Date.now() + (60 * 1000); 
+            (function frame() { confetti({ particleCount: 3, angle: 60, spread: 60, origin: { x: 0 }, colors: ['#ffd700', '#ffaa00', '#ffffff'] }); confetti({ particleCount: 3, angle: 120, spread: 60, origin: { x: 1 }, colors: ['#ffd700', '#ffaa00', '#ffffff'] }); if (Date.now() < end) requestAnimationFrame(frame); }());
+        }
+
+        function update() {
+            const now = new Date(); let target = new Date(now.getFullYear(), bMonth, bDay, bHour, bMin);
+            if (target < now && (now - target) > 86400000) target.setFullYear(now.getFullYear() + 1);
+            const diff = target - now;
+
+            if (!document.body.classList.contains('birthday-mode')) {
+                const totalLifeSecs = Math.floor((now - exactBirthDateObject) / 1000);
+                const daysSinceMet = Math.floor((now - new Date(2025, 2, 23)) / (1000 * 60 * 60 * 24));
+                document.getElementById('liveSeconds').innerText = totalLifeSecs.toLocaleString();
+                document.getElementById('metDays').innerText = daysSinceMet >= 0 ? daysSinceMet.toLocaleString() + " magical days" : "Waiting for our day... ✨";
+            }
+
+            if (diff <= 0) {
+                document.body.classList.add('birthday-mode');
+                if (now.getMonth() === bMonth && now.getDate() === bDay && now.getHours() === bHour && now.getMinutes() === bMin) triggerGoldenMinute();
+                else document.getElementById('goldenMinuteBanner').style.display = 'none';
+                if (!hasTriggered) { hasTriggered = true; fadeInAudio(); confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } }); }
+                return;
+            }
+
+            document.getElementById('d').innerText = Math.floor(diff / 86400000); document.getElementById('h').innerText = Math.floor((diff / 3600000) % 24).toString().padStart(2, '0');
+            document.getElementById('m').innerText = Math.floor((diff / 60000) % 60).toString().padStart(2, '0');
+            document.getElementById('s').innerText = Math.floor((diff / 1000) % 60).toString().padStart(2, '0');
+        }
+
+        function openLetter() {
+            triggerHaptic([100, 50, 100, 50, 200]); 
+            document.getElementById('envelopeView').style.display = 'none'; document.getElementById('letterView').style.display = 'block';
+            confetti({ particleCount: 200, spread: 90, origin: { y: 0.6 }, colors: ['#ff2a85', '#8a2be2', '#ffffff', '#ffd700'] });
+        }
+
+        document.getElementById('musicBtn').onclick = () => { if (audio.paused) { audio.volume = 1; audio.play(); document.querySelector('#musicBtn i').classList.replace('fa-music', 'fa-pause'); } else { audio.pause(); document.querySelector('#musicBtn i').classList.replace('fa-pause', 'fa-music'); } };
+
+        // --- Load hints from local storage on load ---
+        function initHints() {
+            const now = new Date();
+            let target = new Date(now.getFullYear(), bMonth, bDay, bHour, bMin);
+            
+            // Clear memory if it's more than 24 hours past the birthday
+            if (target < now && (now - target) > 86400000) {
+                localStorage.removeItem('mokshhhHints');
+                return; 
+            }
+            
+            let savedHints = JSON.parse(localStorage.getItem('mokshhhHints')) || {};
+            for (let id in savedHints) {
+                const hintBox = document.getElementById(id);
+                if (hintBox) {
+                    hintBox.innerHTML = `<div style="color: var(--accent); font-weight: 800; font-size: 1.2rem; margin-bottom: 5px;">Unlocked!</div><span style="font-size:0.9rem; color: #333; font-weight: 700;">${savedHints[id]}</span>`;
+                    hintBox.style.background = "white";
+                }
+            }
+        }
+
+        initHints();
+
+        setInterval(update, 1000); update();
+    </script>
+</body>
+</html>
