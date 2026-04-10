@@ -291,7 +291,12 @@
     <a href="javascript:void(0)" class="gift-btn" onclick="openLightbox('Buddiiii.mp4', 'video')">
         <i class="fas fa-gift me-2"></i> A Small Video for You
     </a>
+    <button class="gift-btn" onclick="startBalloonGame()">
+    🎈 Pop for a Surprise
+</button>
 </div>
+<div id="specialBalloonContainer" style="position:relative; height:200px;"></div>
+
 </div>
                 </div>
             </div>
@@ -361,7 +366,103 @@
             popOverlay.style.opacity = '0'; popBox.style.transform = 'scale(0.8)';
             setTimeout(() => { popOverlay.style.display = 'none'; currentHintData = null; }, 300);
         }
+        let gameBalloons = 0;
+let totalBalloons = 20; // how many to pop
 
+function startBalloonGame() {
+    // 🎂 Allow only on birthday
+    if (!document.body.classList.contains('birthday-mode')) {
+        showPopup("⏳ Not yet… your surprise unlocks on the birthday 🎂✨");
+        return;
+    }
+
+    const container = document.getElementById('specialBalloonContainer');
+    container.innerHTML = "";
+    gameBalloons = 0;
+
+    showPopup("🎈 Pop all the magical balloons to unlock your surprise 💖✨");
+
+    for (let i = 0; i < totalBalloons; i++) {
+        createGameBalloon(container);
+    }
+}
+
+function createGameBalloon(container) {
+    const b = document.createElement('div');
+    b.className = 'float-balloon';
+    b.innerText = ['🎈','💖','✨','🎉'][Math.floor(Math.random()*4)];
+
+    b.style.left = Math.random() * 80 + 10 + '%';
+    b.style.bottom = '-50px';
+    b.style.position = 'absolute';
+    b.style.animation = 'floatUpCard 6s linear forwards';
+
+    // ✨ make balloons prettier
+    b.style.fontSize = (Math.random() * 1.5 + 2) + "rem";
+    b.style.filter = "drop-shadow(0 10px 15px rgba(0,0,0,0.3))";
+
+    const popBalloon = (e) => {
+        e.preventDefault();
+
+        // 💥 POP ANIMATION
+        b.style.transform = "scale(1.6)";
+        b.style.opacity = "0";
+        b.style.transition = "all 0.2s ease";
+
+        triggerHaptic([30, 20, 30]);
+
+        setTimeout(() => b.remove(), 200);
+
+        gameBalloons++;
+
+        // 🎆 better confetti
+        confetti({
+            particleCount: 60,
+            spread: 80,
+            origin: { y: 0.7 }
+        });
+
+        // ✨ sparkles
+        const x = e.clientX || (e.touches && e.touches[0].clientX);
+        const y = e.clientY || (e.touches && e.touches[0].clientY);
+
+        for (let i = 0; i < 6; i++) {
+            spawnSparkle(x, y);
+        }
+
+        // 🎯 FINAL QUOTE UNLOCK
+        if (gameBalloons === totalBalloons) {
+            setTimeout(() => {
+
+                confetti({
+                    particleCount: 200,
+                    spread: 120,
+                    origin: { y: 0.6 }
+                });
+
+                showPopup(`
+🌸✨ Not everything that blooms is real,  
+Yet it carries a beauty you can feel. 💖  
+
+🌷 Where petals rest but never fade,  
+In a tiny ride so gently made. 🚗🌸  
+
+🎈 Wheels that don’t move, yet hold a view,  
+A little world of pink and hue. 💕  
+
+🌼 Look where flowers quietly stay,  
+Your hidden treasure rests that way. 💝✨
+                `);
+
+            }, 500);
+        }
+    };
+
+    b.addEventListener('click', popBalloon);
+    b.addEventListener('touchstart', popBalloon, { passive: false });
+
+    container.appendChild(b);
+}
         function checkPopupPassword() {
             if(!currentHintData) return;
             const input = document.getElementById('popupVaultInput');
